@@ -1,0 +1,29 @@
+import hector.*
+import especies.*
+import wollok.game.*
+
+program Granja {
+//	CONFIG	
+	game.title("Granja")
+	game.height(10)
+	game.width(10)
+	game.ground("ground.png")
+//Visuales
+	game.addVisual(hector)
+
+// TECLADO 
+	keyboard.up().onPressDo   { hector.move(hector.position().up(1)) }
+	keyboard.down().onPressDo { hector.move(hector.position().down(1)) }
+	keyboard.left().onPressDo { hector.move(hector.position().left(1)) }
+	keyboard.right().onPressDo{ hector.move(hector.position().right(1)) }
+	keyboard.m().onPressDo	  { hector.sembar(new Maiz(position = hector.position()))}
+	keyboard.t().onPressDo	  { hector.sembar(new Trigo(position = hector.position()))}
+	keyboard.o().onPressDo	  { hector.sembar(new Tomaco(position = hector.position()))}
+	keyboard.r().onPressDo    { hector.regar()}
+	keyboard.c().onPressDo	  { hector.cosechar()}
+	keyboard.v().onPressDo	  { hector.vender()}
+	keyboard.p().onPressDo 	  { hector.cuantoOroYPlantasTengo()}
+
+//	START
+	game.start()
+}
